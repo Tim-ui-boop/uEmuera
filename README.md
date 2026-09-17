@@ -1,62 +1,36 @@
-uEmuera
-=======
+# uEmuera
 
-<img src="Assets/splash/icon.png" width="256"/>
+uEmuera is a Unity port of the Emuera interpreter for playing era games on mobile platforms.
 
-此分支修改自 [Fegelein21/uEmuera](https://github.com/Fegelein21/uEmuera) 分支，并同步 [xerysherry/uEmuera](https://github.com/xerysherry/uEmuera) 主分支的最新提交
+## Android game installation
 
-修复了新版本游戏在uEmuera模拟器中无法显示立绘及图片的问题
+Game files must be UTF-8 encoded. Place each era game in its own folder below one of these locations:
 
-非常感谢 [xerysherry](https://github.com/xerysherry) 编写了uEmuera模拟器及 [Fegelein21](https://github.com/Fegelein21) 为Emuera模拟器作出的贡献
+- `/storage/emulated/0/emuera`
+- `/storage/emulated/1/emuera`
+- `/storage/emulated/2/emuera`
 
-简介
-----
+On first launch, Android may ask for permission to access files. Grant that permission so uEmuera can discover and read games. The app also checks the legacy `sdcard0`, `sdcard1`, and `sdcard2` paths on devices that expose them.
 
-Emuera是Emulator of Eramaker的缩写，是Windows平台下文字游戏平台。
+## Compatibility limitations
 
-该项目为Emuera的Unity3D移植版本。意在利用Unity3D多平台特性，方便移植到非Windows平台。
+uEmuera does not include all Emuera Anchor or EE functionality. A game can therefore contain untranslated text or fail to load when it depends on features that are not implemented by this port.
 
-当前项目以基于emuera1824v15版本源代码，部分GXX相关绘制指令没有实现。
+The following feature groups are currently unsupported or incomplete:
 
-几乎可以执行所有era脚本游戏！
+- Sound-related EE functions.
+- XML resource loading.
+- `CLEARMEMORY()`.
+- `GETMEMORYUSAGE()`.
+- `TRYCALLF`.
+- Some other Anchor-only or EE-only functions.
 
-下载
-----
+Games using these functions may need to be modified before they can run. Unsupported functions must not be silently assumed to work; compatibility work should add an explicit implementation or a clear diagnostic before claiming support.
 
-[https://github.com/kmyuhkyuk/uEmuera/releases](https://github.com/kmyuhkyuk/uEmuera/releases)
+## Building
 
-源项目地址
-----
-[https://github.com/xerysherry/uEmuera](https://github.com/xerysherry/uEmuera)
+The project uses Unity. The Unity editor version recorded by the project is `6000.0.19f1`. Android APK builds should use that editor version, or a compatible Unity 6 version.
 
-[https://github.com/Fegelein21/uEmuera](https://github.com/Fegelein21/uEmuera)
+## License
 
-如何使用：
-----------
-
-1. 请确保era相关文件编码为UTF8，包括\*.csv, \*.ERB, \*.ERH。
-2. 请在初次运行app时，选择允许“文件访问”的权限。
-3. 请把处理完毕的era脚本文件夹放置在sdcard下的emuera文件夹内。完整路径为storage/emulated/0/emuera, storage/emulated/1/emuera, storage/emulated/2/emuera
-
-已知问题/需要改进项：
----------------------
-
-1. 无法在app内修改era游戏配置
-2. 无调试功能
-3. 部分游戏的某些指令效率较低，导致卡顿
-4. 可能会比较耗电（Unity3D程序通病）
-5. ...
-
-截图
-----
-
-开始界面
-![Screenshot1](Screenshot/screenshot1.png)
-游戏运行界面
-![Screenshot2](Screenshot/screenshot2.png)
-快捷按钮
-![Screenshot3](Screenshot/screenshot3.png)
-指令输入
-![Screenshot4](Screenshot/screenshot4.png)
-缩放控制
-![Screenshot5](Screenshot/screenshot5.png)
+See [LICENSE](LICENSE).
